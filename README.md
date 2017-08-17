@@ -31,3 +31,15 @@ e.g. <my_awesome_class : fully_qualified_path_of_implementation>
 In the case the fully_qualified_path_implementation has as well an inection, add a property  -getting the implementation of what you are injecting via the 
 name of the class in the XML file.
 
+## constructor injection
+
+The idea is very similar, but inject in the contstructo, passing the index in the constructor. It's nice that you can control how - you can use them together.
+
+
+# Autowire!
+
+byType - if there is a single implementation of a certain contract. If there are two implementation  it throws.
+byName - 
+constructor - if there is only one 
+no - cannot be autowire. 
+
