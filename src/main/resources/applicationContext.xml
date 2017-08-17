@@ -7,9 +7,9 @@
 
     <bean name="repositoryImplementation" class="com.pluralsight.repository.HibernateCustomerRepositoryImpl"/>
 
-    <bean name="serviceImplementation" class="com.pluralsight.service.CustomerServiceImp" autowire="byName">
+    <bean name="serviceImplementation" class="com.pluralsight.service.CustomerServiceImp" >
         <!--<property name="customerRepository" ref="repositoryImplementation"></property>-->
-        <!--<constructor-arg index="0" ref="repositoryImplementation"></constructor-arg>-->
+        <constructor-arg index="0" ref="repositoryImplementation"></constructor-arg>
     </bean>
 
 </beans>
