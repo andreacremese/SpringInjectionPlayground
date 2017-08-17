@@ -5,11 +5,10 @@
        xsi:schemaLocation = "http://www.springframework.org/schema/beans
    http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean name="someInjectedName"
-          class="com.pluralsight.repository.HibernateCustomerRepositoryImpl"/>
+    <bean name="repositoryImplementation" class="com.pluralsight.repository.HibernateCustomerRepositoryImpl"/>
 
-    <bean name="cutomerService" class="com.pluralsight.service.CustomerServiceImp">
-        <property name="customerRepository" ref="someInjectedName"></property>
+    <bean name="serviceImplementation" class="com.pluralsight.service.CustomerServiceImp">
+        <property name="customerRepository" ref="repositoryImplementation"></property>
     </bean>
 
 </beans>

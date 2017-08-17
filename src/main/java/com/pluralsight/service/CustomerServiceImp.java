@@ -9,7 +9,7 @@ import java.util.List;
 // this is where the biz logic lives
 public class CustomerServiceImp implements CustomerService {
 
-    private CustomerRepository customerRepository = new HibernateCustomerRepositoryImpl();
+    private CustomerRepository customerRepository;
 
     public void setCustomerRepository(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
