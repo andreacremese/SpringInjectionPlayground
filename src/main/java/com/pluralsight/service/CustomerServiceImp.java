@@ -20,7 +20,7 @@ public class CustomerServiceImp implements CustomerService {
         this.customerRepository = hibernateCustomerRepository;
     }
 
-    public void setCustomerRepository(CustomerRepository customerRepository) {
+    public void setrepositoryImplementation(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
 
