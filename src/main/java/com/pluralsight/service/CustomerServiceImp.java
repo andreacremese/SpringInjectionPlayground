@@ -3,26 +3,17 @@ package com.pluralsight.service;
 import com.pluralsight.model.Customer;
 import com.pluralsight.repository.CustomerRepository;
 import com.pluralsight.repository.HibernateCustomerRepositoryImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 // this is where the biz logic lives
+@Service("customerService")
 public class CustomerServiceImp implements CustomerService {
 
+    @Autowired
     private CustomerRepository customerRepository;
-
-
-    public CustomerServiceImp() {
-
-    }
-
-    public CustomerServiceImp(HibernateCustomerRepositoryImpl hibernateCustomerRepository) {
-        this.customerRepository = hibernateCustomerRepository;
-    }
-
-    public void setrepositoryImplementation(CustomerRepository customerRepository) {
-        this.customerRepository = customerRepository;
-    }
 
     @Override
     public List<Customer> findAll() {

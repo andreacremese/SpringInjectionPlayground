@@ -1,15 +1,28 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 
-<beans xmlns = "http://www.springframework.org/schema/beans"
-       xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation = "http://www.springframework.org/schema/beans
-   http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean name="repositoryImplementation" class="com.pluralsight.repository.HibernateCustomerRepositoryImpl"/>
-
-    <bean name="serviceImplementation" class="com.pluralsight.service.CustomerServiceImp" >
-        <!--<property name="customerRepository" ref="repositoryImplementation"></property>-->
-        <constructor-arg index="0" ref="repositoryImplementation"></constructor-arg>
-    </bean>
-
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:annotation-config/>
+    <context:component-scan base-package="com.pluralsight"/>
 </beans>
+
+
+        <!--<beans xmlns = "http://www.springframework.org/schema/beans"-->
+        <!--xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"-->
+        <!--xsi:schemaLocation = "http://www.springframework.org/schema/beans-->
+        <!--http://www.springframework.org/schema/beans/spring-beans.xsd">-->
+
+        <!--&lt;!&ndash;<bean name="repositoryImplementation" class="com.pluralsight.repository.HibernateCustomerRepositoryImpl"/>&ndash;&gt;-->
+
+        <!--&lt;!&ndash;<bean name="serviceImplementation" class="com.pluralsight.service.CustomerServiceImp" >&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash;<property name="customerRepository" ref="repositoryImplementation"></property>&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;<constructor-arg index="0" ref="repositoryImplementation"></constructor-arg>&ndash;&gt;-->
+        <!--&lt;!&ndash;</bean>&ndash;&gt;-->
+
+        <!--</beans>-->
