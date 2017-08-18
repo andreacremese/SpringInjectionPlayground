@@ -7,6 +7,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class Application {
 
     public static void main(String[] args){
+        // option 1 and 2, with xml injection
+        // note that the name of the service to inject can be either in the annotation of the class OR in the
+        // xml file
 //        ApplicationContext appContext = new ClassPathXmlApplicationContext("applicationContext.xml");
 //        CustomerService service = appContext.getBean("customerService", CustomerService.class);
 
