@@ -1,3 +1,9 @@
+
+# Java Spring Playground
+
+Notes on Java Spring dependency injection, see commit history for different types of injection
+
+
 WORA
 Write Once Run Anywhere
 
