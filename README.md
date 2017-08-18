@@ -83,6 +83,18 @@ with getter and autowire - note that
     }
 ```
 
-** Option 2.33**
+** Option 2.3**
 with constructor autowire
+
+
+```$xslt
+    @Autowired
+    public CustomerServiceImp(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
+```
+
+
+# Option 3 in Java
+First change, there is not going to be a `applicationContext.xml`
 

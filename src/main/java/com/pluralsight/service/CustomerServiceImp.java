@@ -11,6 +11,11 @@ import java.util.List;
 // this is where the biz logic lives
 @Service("customerService")
 public class CustomerServiceImp implements CustomerService {
+        // not an option, all is cohese like glue
+        private CustomerRepository customerRepository = new HibernateCustomerRepositoryImpl();
+
+
+
 //    setter autowire option 2
 //    @Autowired
 //    public void setCustomerRepository(CustomerRepository customerRepository) {
@@ -19,14 +24,14 @@ public class CustomerServiceImp implements CustomerService {
 
     // option 1 - member autowire
     //@Autowired
-    private CustomerRepository customerRepository;
+//    private CustomerRepository customerRepository;
 
 
     // option 3 - constructor autowire
-    @Autowired
-    public CustomerServiceImp(CustomerRepository customerRepository) {
-        this.customerRepository = customerRepository;
-    }
+//    @Autowired
+//    public CustomerServiceImp(CustomerRepository customerRepository) {
+//        this.customerRepository = customerRepository;
+//    }
 
     @Override
     public List<Customer> findAll() {
