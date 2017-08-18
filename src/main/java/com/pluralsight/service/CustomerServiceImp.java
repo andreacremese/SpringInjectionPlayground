@@ -2,8 +2,6 @@ package com.pluralsight.service;
 
 import com.pluralsight.model.Customer;
 import com.pluralsight.repository.CustomerRepository;
-import com.pluralsight.repository.HibernateCustomerRepositoryImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,9 +9,12 @@ import java.util.List;
 // this is where the biz logic lives
 @Service("customerService")
 public class CustomerServiceImp implements CustomerService {
-        // not an option, all is cohese like glue
-        private CustomerRepository customerRepository = new HibernateCustomerRepositoryImpl();
+    // not an option, all is cohese like glue
+    private CustomerRepository customerRepository;
 
+    public void setCustomerRepository(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
 
 
 //    setter autowire option 2

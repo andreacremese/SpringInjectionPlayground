@@ -91,5 +91,34 @@ with constructor autowire
 
 
 # Option 3 in Java
-First change, there is not going to be a `applicationContext.xml`
+First change, there is not going to be a `applicationContext.xml`, users were tired of having to write xml files
 
+so add a class that is @configuration, that will define the bean. For example, instead of the xml file, you'll have
+```
+@Configuration
+public class AppConfig {
+
+    @Bean(name = "customerService")
+    public CustomerService getCustomerService() {
+        return new CustomerServiceImp();
+    }
+
+}
+```
+
+## 3.1 setter injection
+You call the setter on a bean.
+
+```aidl
+    @Bean(name = "customerService")
+    public CustomerService getCustomerService() {
+        CustomerServiceImp service = new CustomerServiceImp();
+        service.setCustomerRepository(getCustomerRepository());
+        return service;
+    }
+
+    @Bean(name = "customerRepository")
+    public CustomerRepository getCustomerRepository() {
+        return new HibernateCustomerRepositoryImpl();
+    }
+```

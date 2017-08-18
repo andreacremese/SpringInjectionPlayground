@@ -1,6 +1,7 @@
 import com.pluralsight.service.CustomerService;
 import com.pluralsight.service.CustomerServiceImp;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 
@@ -14,7 +15,15 @@ public class Application {
 //        CustomerService service = appContext.getBean("customerService", CustomerService.class);
 
         // option none, all cohese like glue
-        CustomerService service = new CustomerServiceImp();
+
+
+        // option 3, not using the xml file BUT instead the appConfigClass that we provided
+        ApplicationContext appContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        CustomerService service = appContext.getBean("customerService", CustomerService.class);
+
+
+        // vanilla implementation
+        //CustomerService service = new CustomerServiceImp();
         System.out.println(service.findAll().get(0).getFirstName());
     }
 }
