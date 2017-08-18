@@ -12,12 +12,12 @@ public class CustomerServiceImp implements CustomerService {
     // not an option, all is cohese like glue
     private CustomerRepository customerRepository;
 
-    public void setCustomerRepository(CustomerRepository customerRepository) {
-        this.customerRepository = customerRepository;
+    public CustomerServiceImp(CustomerRepository cr) {
+        this.customerRepository = cr;
     }
 
 
-//    setter autowire option 2
+//    setter autowire option 2 and option 3 with setter
 //    @Autowired
 //    public void setCustomerRepository(CustomerRepository customerRepository) {
 //        this.customerRepository = customerRepository;

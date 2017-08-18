@@ -122,3 +122,6 @@ You call the setter on a bean.
         return new HibernateCustomerRepositoryImpl();
     }
 ```
+
+## 3.2 constructor injector
+same as 3.1, but no setter, rather contrtuctoer

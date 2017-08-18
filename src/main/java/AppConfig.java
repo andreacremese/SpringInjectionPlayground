@@ -10,8 +10,12 @@ public class AppConfig {
 
     @Bean(name = "customerService")
     public CustomerService getCustomerService() {
-        CustomerServiceImp service = new CustomerServiceImp();
-        service.setCustomerRepository(getCustomerRepository());
+        // NOTE!!!!!!! you don't need to do any initialization, spring will do everything for you
+
+        CustomerServiceImp service = new CustomerServiceImp(getCustomerRepository());
+//        CustomerServiceImp service = new CustomerServiceImp();
+        // this is for setter injection
+//        service.setCustomerRepository(getCustomerRepository());
         return service;
     }
 
