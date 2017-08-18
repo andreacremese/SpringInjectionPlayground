@@ -11,9 +11,22 @@ import java.util.List;
 // this is where the biz logic lives
 @Service("customerService")
 public class CustomerServiceImp implements CustomerService {
+//    setter autowire option 2
+//    @Autowired
+//    public void setCustomerRepository(CustomerRepository customerRepository) {
+//        this.customerRepository = customerRepository;
+//    }
 
-    @Autowired
+    // option 1 - member autowire
+    //@Autowired
     private CustomerRepository customerRepository;
+
+
+    // option 3 - constructor autowire
+    @Autowired
+    public CustomerServiceImp(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
 
     @Override
     public List<Customer> findAll() {

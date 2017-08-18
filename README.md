@@ -20,7 +20,7 @@ applicationContext.xml contains the hashMap of the injection in the resources.
 a bean in the spring xml defines the injection in the classes. Defining a bean is like using the keyword `new`, mentioning the interface that it is used.
 
 
-# XML
+# Option 1 : XML
 ## injection
 Setter and injection
 
@@ -48,13 +48,15 @@ byName - the name of the setter
 constructor - if there is only one 
 no - cannot be autowire. 
 
+add these to the bean in the xml file.
 
-# XML annotations
+
+# Option 2 -annotations
 
 
-* amend the xml file
+## 1 amend the xml file
 
-* annotate the implementations with one of the following:
+## 2 annotate the implementations with one of the following:
 
 @Component - anything that is a POHJO
 @Service - anything that is a biz logic
@@ -62,14 +64,25 @@ no - cannot be autowire.
 
 e.g. `@Repository("mockRepository")` - this is in lieu of annotating in the xml file
 
-* Then do autowiring
+## 3 Then do autowiring
 
-** Option 1**
+** Option 2.1**
 
 ```    
     @Autowired
        private CustomerRepository customerRepository;
 ```
 
+** Option 2.2**
+with getter and autowire - note that 
 
+```$xslt
+    @Autowired
+    public void setCustomerRepository(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
+```
+
+** Option 2.33**
+with constructor autowire
 
