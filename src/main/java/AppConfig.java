@@ -21,9 +21,12 @@ public class AppConfig {
         return service;
     }
 
-    @Bean(name = "customerRepository")
-    public CustomerRepository getCustomerRepository() {
-        return new HibernateCustomerRepositoryImpl();
-    }
+
+
+//      can remove the bean and use repository.
+//    @Bean(name = "customerRepository")
+//    public CustomerRepository getCustomerRepository() {
+//        return new HibernateCustomerRepositoryImpl();
+//    }
 
 }
