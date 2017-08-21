@@ -125,3 +125,8 @@ You call the setter on a bean.
 
 ## 3.2 constructor injector
 same as 3.1, but no setter, rather contrtuctoer
+
+
+## with autowire
+@ComponentScan({"packageWHereToSearch"})
+just provide the settter
