@@ -1,6 +1,7 @@
 package com.pluralsight.repository;
 
 import com.pluralsight.model.Customer;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -9,8 +10,12 @@ import java.util.List;
 // This is needed for autowired - and removed the bean definition from the AppConfig
 @Repository("customerRepository")
 public class HibernateCustomerRepositoryImpl implements CustomerRepository {
+    @Value("${connString}")
+    private String connString;
+
     @Override
     public List<Customer> findAdd() {
+        System.out.println(this.connString);
         List<Customer> customers = new ArrayList<Customer>();
         Customer c = new Customer();
         c.setFirstName("nome");

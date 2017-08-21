@@ -16,11 +16,6 @@ public class Application {
         ApplicationContext appContext = new AnnotationConfigApplicationContext(AppConfig.class);
         CustomerService service = appContext.getBean("customerService", CustomerService.class);
 
-        System.out.println(service);
-
-        service = appContext.getBean("customerService", CustomerService.class);
-
-        System.out.println(service);
         // option none, all cohese like glue
         //CustomerService service = new CustomerServiceImp();
         System.out.println(service.findAll().get(0).getFirstName());

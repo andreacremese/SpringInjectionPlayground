@@ -14,7 +14,7 @@ import java.util.List;
 // this is where the biz logic lives
 // This is needed for autowired - and removed the bean definition from the AppConfig
 @Service("customerService")
-@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+//@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class CustomerServiceImp implements CustomerService {
     // not an option, all is cohese like glue
 //    @Autowired

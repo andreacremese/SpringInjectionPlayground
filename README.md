@@ -149,3 +149,15 @@ You still need to specify, in the annotation of the object, the name of the bean
 the default is **Singleton**, if you want prototype (meaning, a different instance each time), you need to specify it. 
 
 There are also additional scopes per web scopes: session (one instance per session), request (one instance per http request), global session (survives the app)
+
+
+# Property files!
+
+the properties will go into a specific bean, where they can be accessed.
+
+
+    // this is the bean to retrieve the properties from file
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer getPropertySourcesPlaceholderConfigurer() {
+        return new PropertySourcesPlaceholderConfigurer();
+    }
