@@ -129,4 +129,9 @@ same as 3.1, but no setter, rather contrtuctoer
 
 ## with autowire
 @ComponentScan({"packageWHereToSearch"})
-just provide the settter
+just provide the settter and let the autowire do the full magic
+
+Also, you can remove all beans declarations, and let autowire do all the wiring (thhis sounds like a great way to loose control over the injection).
+
+
+# Bean lifecycle
