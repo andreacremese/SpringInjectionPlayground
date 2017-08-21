@@ -10,7 +10,7 @@ import java.util.List;
 // this is where the biz logic lives
 
 // this is for 3.2
-//@Service("customerService")
+@Service("customerService")
 public class CustomerServiceImp implements CustomerService {
     // not an option, all is cohese like glue
     @Autowired
