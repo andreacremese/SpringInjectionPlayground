@@ -4,6 +4,8 @@ import com.pluralsight.model.Customer;
 import com.pluralsight.repository.CustomerRepository;
 import com.pluralsight.repository.HibernateCustomerRepositoryImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +14,7 @@ import java.util.List;
 // this is where the biz logic lives
 // This is needed for autowired - and removed the bean definition from the AppConfig
 @Service("customerService")
-@Scope("singleton")
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class CustomerServiceImp implements CustomerService {
     // not an option, all is cohese like glue
 //    @Autowired

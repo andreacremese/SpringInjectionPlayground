@@ -145,3 +145,7 @@ You still need to specify, in the annotation of the object, the name of the bean
 
 
 # Bean lifecycle
+
+the default is **Singleton**, if you want prototype (meaning, a different instance each time), you need to specify it. 
+
+There are also additional scopes per web scopes: session (one instance per session), request (one instance per http request), global session (survives the app)
