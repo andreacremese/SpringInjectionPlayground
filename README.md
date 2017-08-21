@@ -133,9 +133,14 @@ just provide the settter and let the autowire do the full magic
 
 Also, you can remove all beans declarations, and let autowire do all the wiring (thhis sounds like a great way to loose control over the injection).
 
+with the stereotype annotation you can start annotate the implementations and let the autowire do the magic for the injeciton. This is very powerful BUT it also
+opens up the fact that the implementation "knows" above its scope.
 
+Basically, the idea of Autowired is to remove the declaraton of the bean (either in XML or in the java config) and let the scanner find an implementation (!!!!!!!!!!!!!!!)
+You still need to specify, in the annotation of the object, the name of the bean afterall, so you are effectively shifting the definition of the bean from A to B 
+- from the AppConfig to the annotation itself.
 
-
+**This seems to be very useful in case one implementation is provided per package (ex code VS test), and just providing the scope and @Autowired you don't need to reinvent the wheel**
 
 
 
