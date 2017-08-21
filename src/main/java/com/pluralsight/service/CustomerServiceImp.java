@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 // this is where the biz logic lives
-@Service("customerService")
+//@Service("customerService")
 public class CustomerServiceImp implements CustomerService {
         // not an option, all is cohese like glue
         private CustomerRepository customerRepository = new HibernateCustomerRepositoryImpl();
@@ -18,9 +18,9 @@ public class CustomerServiceImp implements CustomerService {
 
 //    setter autowire option 2
 //    @Autowired
-//    public void setCustomerRepository(CustomerRepository customerRepository) {
-//        this.customerRepository = customerRepository;
-//    }
+    public void setCustomerRepository(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
 
     // option 1 - member autowire
     //@Autowired
