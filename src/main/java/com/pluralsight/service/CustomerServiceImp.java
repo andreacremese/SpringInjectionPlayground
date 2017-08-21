@@ -12,7 +12,7 @@ import java.util.List;
 //@Service("customerService")
 public class CustomerServiceImp implements CustomerService {
         // not an option, all is cohese like glue
-        private CustomerRepository customerRepository = new HibernateCustomerRepositoryImpl();
+        private CustomerRepository customerRepository;
 
 
 

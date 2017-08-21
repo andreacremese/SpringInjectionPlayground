@@ -134,4 +134,9 @@ just provide the settter and let the autowire do the full magic
 Also, you can remove all beans declarations, and let autowire do all the wiring (thhis sounds like a great way to loose control over the injection).
 
 
+
+
+
+
+
 # Bean lifecycle
