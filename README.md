@@ -8,123 +8,110 @@ WORA
 Write Once Run Anywhere
 
 
+
+Three options:
+
+* xml
+* annotations
+* in code
+
+
 # Option 1 : XML
-
-configures via XML (first method, and the most used still)
-
+first method, and the most used still
+configures all via XML
+you can provide different behaviors for the application simply by swapping out the applicationContext.xml, instead of
+having to recompile from scratch.
 applicationContext.xml contains the hashMap of the injection in the resources.
 
-a bean in the spring xml defines the injection in the classes. Defining a bean is like using the keyword `new`, mentioning the interface that it is used.
+## bean
+
+A bean in the spring xml defines the injection in the classes. 
+Defining a bean is like using the keyword `new`, mentioning the interface that it is used.
+requires 
+* name (of what you want to implement) 
+* class (the class that provides the implementation)
+* autowire (maybe)
+* properties the arguments that are to be passed ot the constructor.
+
 
 ## injection
-Setter and injection
 
-### Setter injection
-when injection add a setter for the class you want to inject
-the XML is a hashmap <identifierOfClass: implementation >
-e.g. <my_awesome_class : fully_qualified_path_of_implementation>
-
-In the case the fully_qualified_path_implementation has as well an inection, add a property  -getting the implementation of what you are injecting via the 
-name of the class in the XML file.
-
-don't like this a lot, as it leaves you with a public setter for somethign that shoudl be assigned only at creation...
+* Setter (add a <property /> element to the bean node, with reference to the bean you are injecting.)
+* Constructor(add a <constructor-arg /> element to the bean node.)
 
 
+#### Autowire for XML
 
-### constructor injection
-
-The idea is very similar, but inject in the contstructo, passing the index in the constructor. It's nice that you can control how - you can use them together.
-
-
-#### Autowire!
+This is instead of adding the setter or constructor the parameters in the xm file.
 
 byType - if there is a single implementation of a certain contract. If there are two implementation  it throws.
-byName - the name of the setter
+byName - the name of the setter needs to match the name of the bean specified in the xml file. This sounds EVIL, as you 
+        have a dependency between the name of the bean in the XML file and s setter in the code.
 constructor - if there is only one 
-no - cannot be autowire. 
+no - cannot be autowired1. 
 
 add these to the bean in the xml file.
 
+NOTE THAT IF YOU HAVE MULTIPLE IMPLEMENTATIONS YOU NEED TO START NAMING THE SETTERS (IN CODE) WITH THE NAME OF THE BEAN
+(in the XML) YUK!!!!!!
 
-# Option 2 -annotations
+
+# Option 2 - annotations configurations
+
+There is a xml file, but that has only scaffolding and where to start.
+The xml only has the information regarding the fdact we are using annotations AND where to start to scan for beans.
+Uses Stereotypes annotations + Autowire. Seems very weak in case of multiple implementations (does NOT THROW IN CASE
+OF MULTIPLE IMPLEMENTATIONS?????)
 
 
-## 1 amend the xml file
+## Stereotype annotations
 
-## 2 annotate the implementations with one of the following:
+These are all the same, they don't add functions or behavior, but they allow to separate among the various types of function.
+You annotate the class ILO adding nodes to the xml file.
 
-@Component - anything that is a POHJO
-@Service - anything that is a biz logic
-@Repository - data layer
+* @Component - anything that is a POHJO
+* @Service - anything that is a biz logic
+* @Repository - data layer
 
-e.g. `@Repository("mockRepository")` - this is in lieu of annotating in the xml file
 
-## 3 Then do autowiring
+## Injection
+*Autowire*
+THIS IS DIFFERENT THAN AUTOWIRE IN XML METHOD!!!!
+Can be done in three different ways.
 
-** Option 2.1**
 
-```    
-    @Autowired
+* Member
+    ```    
+       @Autowired
        private CustomerRepository customerRepository;
-```
+    ```
+* Setter
+    ```
+        @Autowired
+        public void setCustomerRepository(CustomerRepository customerRepository) {
+            this.customerRepository = customerRepository;
+        }
+    ```
 
-** Option 2.2**
-with getter and autowire - note that 
-
-```$xslt
-    @Autowired
-    public void setCustomerRepository(CustomerRepository customerRepository) {
-        this.customerRepository = customerRepository;
-    }
-```
-
-** Option 2.3**
-with constructor autowire
-
-
-```$xslt
-    @Autowired
-    public CustomerServiceImp(CustomerRepository customerRepository) {
-        this.customerRepository = customerRepository;
-    }
-```
+* Constructor
+    ```
+        @Autowired
+        public CustomerServiceImp(CustomerRepository customerRepository) {
+            this.customerRepository = customerRepository;
+        }
+    ```
 
 
-# Option 3 in Java
-First change, there is not going to be a `applicationContext.xml`, users were tired of having to write xml files
+# Completely in code
+Disentangle XML and code (see above) => no `applicationContext.xml`.
 
-so add a class that is @configuration, that will define the bean. For example, instead of the xml file, you'll have
-```
-@Configuration
-public class AppConfig {
+`@Configuration` class, that will bootstrap the bean ILO xml file.
+This will have the `@Bean` inside to replace each config node in the xml file.
+Use constructor OR setter then in that file.
 
-    @Bean(name = "customerService")
-    public CustomerService getCustomerService() {
-        return new CustomerServiceImp();
-    }
-
-}
-```
-
-## 3.1 setter injection
-You call the setter on a bean.
-
-```aidl
-    @Bean(name = "customerService")
-    public CustomerService getCustomerService() {
-        CustomerServiceImp service = new CustomerServiceImp();
-        service.setCustomerRepository(getCustomerRepository());
-        return service;
-    }
-
-    @Bean(name = "customerRepository")
-    public CustomerRepository getCustomerRepository() {
-        return new HibernateCustomerRepositoryImpl();
-    }
-```
-
-## 3.2 constructor injector
-same as 3.1, but no setter, rather contrtuctoer
+NOTE -> the POJOS and all other class don't need any annotation in order to be wired.
+THis is an advantage over the annotations method, that requires those POJOS to be amended, and also
+to the XML method, that requires the methods to match the name of the beans!!!! 
 
 
 ## with autowire
@@ -149,15 +136,3 @@ You still need to specify, in the annotation of the object, the name of the bean
 the default is **Singleton**, if you want prototype (meaning, a different instance each time), you need to specify it. 
 
 There are also additional scopes per web scopes: session (one instance per session), request (one instance per http request), global session (survives the app)
-
-
-# Property files!
-
-the properties will go into a specific bean, where they can be accessed.
-
-
-    // this is the bean to retrieve the properties from file
-    @Bean
-    public static PropertySourcesPlaceholderConfigurer getPropertySourcesPlaceholderConfigurer() {
-        return new PropertySourcesPlaceholderConfigurer();
-    }

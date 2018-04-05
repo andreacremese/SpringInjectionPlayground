@@ -9,29 +9,33 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
+
+// ONLY for JAVA injection
 @Configuration
-@ComponentScan({"com.pluralsight"})
+
+//@ComponentScan({"com.pluralsight"})
+
+// Annotation in order to pass in proprerites.
 @PropertySource("app.properties")
 public class AppConfig {
 
-//    @Bean("customerService")
-//    public CustomerService getCustomerService() {
-//        CustomerServiceImp result = new CustomerServiceImp();
-//        result.setCustomerRepository(getCustomerRepository());
-//        return result;
-//    }
-//
-//    @Bean("customerRepository")
-//    public CustomerRepository getCustomerRepository() {
-//        return new HibernateCustomerRepositoryImpl();
-//    }
 
+    // Setter implementation of injection
+    @Bean("customerService")
+    public CustomerService getCustomerService() {
+        CustomerServiceImp result = new CustomerServiceImp();
+        result.setCustomerRepository(getCustomerRepository());
+        return result;
+    }
 
+    @Bean("customerRepository")
+    public CustomerRepository getCustomerRepository() {
+        return new HibernateCustomerRepositoryImpl();
+    }
 
-    // this is the bean to retrieve the properties from file
+    // This is reqruied in order to read the properties in the file
     @Bean
     public static PropertySourcesPlaceholderConfigurer getPropertySourcesPlaceholderConfigurer() {
         return new PropertySourcesPlaceholderConfigurer();
     }
-
 }

@@ -8,17 +8,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 // annotations method - stereotype
-//@Repository("customerRepository")
-public class HibernateCustomerRepositoryImpl implements CustomerRepository {
+//@Repository("secondImplementation")
+public class SecondRepoImpl implements CustomerRepository {
     @Value("${connString}")
     private String connString;
 
     @Override
     public List<Customer> findAdd() {
-        System.out.println(this.connString);
+        System.out.println(this.connString + "new implementation");
         List<Customer> customers = new ArrayList<Customer>();
         Customer c = new Customer();
-        c.setFirstName("nome");
+        c.setFirstName("New implementation!!!!!");
         c.setLastName("cognome");
         customers.add(c);
         return customers;

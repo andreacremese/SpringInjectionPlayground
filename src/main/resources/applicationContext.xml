@@ -1,6 +1,7 @@
-<!--<?xml version = "1.0" encoding = "UTF-8"?>-->
+<?xml version = "1.0" encoding = "UTF-8"?>
 
 
+        <!--THIS IS THE XML FOR THE ANNOTATION-->
 <!--<beans xmlns="http://www.springframework.org/schema/beans"-->
        <!--xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
        <!--xmlns:context="http://www.springframework.org/schema/context"-->
@@ -8,23 +9,50 @@
 	<!--http://www.springframework.org/schema/beans/spring-beans.xsd-->
 	<!--http://www.springframework.org/schema/context-->
 	<!--http://www.springframework.org/schema/context/spring-context.xsd">-->
+    <!--&lt;!&ndash;We are using the annotation method instead&ndash;&gt;-->
     <!--<context:annotation-config/>-->
+    <!--&lt;!&ndash;Where to start scanning for annotations&ndash;&gt;-->
     <!--<context:component-scan base-package="com.pluralsight"/>-->
 <!--</beans>-->
-        <!--This is the xml for annotation configuration-->
 
 
-<!--this is the xml for xml configuration injection - meaning providing a map in an xml file-->
-        <!--<beans xmlns = "http://www.springframework.org/schema/beans"-->
-        <!--xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"-->
-        <!--xsi:schemaLocation = "http://www.springframework.org/schema/beans-->
-        <!--http://www.springframework.org/schema/beans/spring-beans.xsd">-->
 
-        <!--&lt;!&ndash;<bean name="repositoryImplementation" class="com.pluralsight.repository.HibernateCustomerRepositoryImpl"/>&ndash;&gt;-->
 
-        <!--&lt;!&ndash;<bean name="serviceImplementation" class="com.pluralsight.service.CustomerServiceImp" >&ndash;&gt;-->
-        <!--&lt;!&ndash;&lt;!&ndash;<property name="customerRepository" ref="repositoryImplementation"></property>&ndash;&gt;&ndash;&gt;-->
-        <!--&lt;!&ndash;<constructor-arg index="0" ref="repositoryImplementation"></constructor-arg>&ndash;&gt;-->
-        <!--&lt;!&ndash;</bean>&ndash;&gt;-->
 
-        <!--</beans>-->
+
+
+
+<!--THIS IS THE IMPLEMENTATION OF FULL XML INJECTION-->
+<!--There are no annotations in the code with the full xml method-->
+
+
+
+    <beans xmlns = "http://www.springframework.org/schema/beans"
+        xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation = "http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+        <!--simple bean implementation-->
+        <bean name="repositoryImplementation" class="com.pluralsight.repository.HibernateCustomerRepositoryImpl"/>
+        <bean name="secondRepositoryImplementation" class="com.pluralsight.repository.SecondRepoImpl"/>
+
+
+
+        <!--setting implementation for a class and injecting the required dependencies-->
+    <!--THIS IS REQUIRED IN CASE THERE ARE MULTIPLE IMPLEMENTATIONS-->
+        <bean name="customerService" class="com.pluralsight.service.CustomerServiceImp" >
+
+            <!--This is for setter injection -->
+            <!--<property name="customerRepository" ref="repositoryImplementation"></property>-->
+
+            <!--this is for constructor injection-->
+            <constructor-arg index="0" ref="repositoryImplementation"/>
+
+    </bean>
+
+
+    <!--this is the autowired option. Looks very complicated at scale.-->
+    <!--<bean name="customerService" class="com.pluralsight.service.CustomerServiceImp" autowire="constructor"/>-->
+
+
+        </beans>
