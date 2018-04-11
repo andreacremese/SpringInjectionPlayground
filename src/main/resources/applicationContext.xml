@@ -40,19 +40,19 @@
 
         <!--setting implementation for a class and injecting the required dependencies-->
     <!--THIS IS REQUIRED IN CASE THERE ARE MULTIPLE IMPLEMENTATIONS-->
-        <bean name="customerService" class="com.pluralsight.service.CustomerServiceImp" >
+        <!--<bean name="customerService" class="com.pluralsight.service.CustomerServiceImp" >-->
 
-            <!--This is for setter injection -->
-            <!--<property name="customerRepository" ref="repositoryImplementation"></property>-->
+            <!--&lt;!&ndash;This is for setter injection &ndash;&gt;-->
+            <!--&lt;!&ndash;<property name="customerRepository" ref="repositoryImplementation"></property>&ndash;&gt;-->
 
-            <!--this is for constructor injection-->
-            <constructor-arg index="0" ref="repositoryImplementation"/>
+            <!--&lt;!&ndash;this is for constructor injection&ndash;&gt;-->
+            <!--<constructor-arg index="0" ref="repositoryImplementation"/>-->
 
-    </bean>
+    <!--</bean>-->
 
 
     <!--this is the autowired option. Looks very complicated at scale.-->
-    <!--<bean name="customerService" class="com.pluralsight.service.CustomerServiceImp" autowire="constructor"/>-->
+    <bean name="customerService" class="com.pluralsight.service.CustomerServiceImp" autowire="constructor"/>
 
 
         </beans>

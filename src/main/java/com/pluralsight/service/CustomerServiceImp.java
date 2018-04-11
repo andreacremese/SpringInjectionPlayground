@@ -46,19 +46,19 @@ public class CustomerServiceImp implements CustomerService {
 //    }
 
 
-//    @Autowired
-//    public CustomerServiceImp(CustomerRepository customerRepository) {
-//        this.customerRepository = customerRepository;
-//    }
+    @Autowired
+    public CustomerServiceImp(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
 
 
 
 
 
 // JAVA injection
-    public void setCustomerRepository(CustomerRepository customerRepository) {
-        this.customerRepository = customerRepository;
-    }
+//    public void setCustomerRepository(CustomerRepository customerRepository) {
+//        this.customerRepository = customerRepository;
+//    }
 
 
 
