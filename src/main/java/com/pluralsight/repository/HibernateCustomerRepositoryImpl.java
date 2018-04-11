@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // annotations method - stereotype
-//@Repository("customerRepository")
+@Repository("customerRepository")
 public class HibernateCustomerRepositoryImpl implements CustomerRepository {
     @Value("${connString}")
     private String connString;

@@ -2,18 +2,18 @@
 
 
         <!--THIS IS THE XML FOR THE ANNOTATION-->
-<!--<beans xmlns="http://www.springframework.org/schema/beans"-->
-       <!--xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
-       <!--xmlns:context="http://www.springframework.org/schema/context"-->
-       <!--xsi:schemaLocation="http://www.springframework.org/schema/beans-->
-	<!--http://www.springframework.org/schema/beans/spring-beans.xsd-->
-	<!--http://www.springframework.org/schema/context-->
-	<!--http://www.springframework.org/schema/context/spring-context.xsd">-->
-    <!--&lt;!&ndash;We are using the annotation method instead&ndash;&gt;-->
-    <!--<context:annotation-config/>-->
-    <!--&lt;!&ndash;Where to start scanning for annotations&ndash;&gt;-->
-    <!--<context:component-scan base-package="com.pluralsight"/>-->
-<!--</beans>-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd">
+    <!--We are using the annotation method instead-->
+    <context:annotation-config/>
+    <!--Where to start scanning for annotations-->
+    <context:component-scan base-package="com.pluralsight"/>
+</beans>
 
 
 
@@ -27,32 +27,32 @@
 
 
 
-    <beans xmlns = "http://www.springframework.org/schema/beans"
-        xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation = "http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--<beans xmlns = "http://www.springframework.org/schema/beans"-->
+        <!--xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"-->
+        <!--xsi:schemaLocation = "http://www.springframework.org/schema/beans-->
+        <!--http://www.springframework.org/schema/beans/spring-beans.xsd">-->
 
-        <!--simple bean implementation-->
-        <bean name="repositoryImplementation" class="com.pluralsight.repository.HibernateCustomerRepositoryImpl"/>
-        <bean name="secondRepositoryImplementation" class="com.pluralsight.repository.SecondRepoImpl"/>
-
-
-
-        <!--setting implementation for a class and injecting the required dependencies-->
-    <!--THIS IS REQUIRED IN CASE THERE ARE MULTIPLE IMPLEMENTATIONS-->
-        <bean name="customerService" class="com.pluralsight.service.CustomerServiceImp" >
-
-            <!--This is for setter injection -->
-            <!--<property name="customerRepository" ref="repositoryImplementation"></property>-->
-
-            <!--this is for constructor injection-->
-            <constructor-arg index="0" ref="repositoryImplementation"/>
-
-    </bean>
+        <!--&lt;!&ndash;simple bean implementation&ndash;&gt;-->
+        <!--<bean name="repositoryImplementation" class="com.pluralsight.repository.HibernateCustomerRepositoryImpl"/>-->
+        <!--<bean name="secondRepositoryImplementation" class="com.pluralsight.repository.SecondRepoImpl"/>-->
 
 
-    <!--this is the autowired option. Looks very complicated at scale.-->
-    <!--<bean name="customerService" class="com.pluralsight.service.CustomerServiceImp" autowire="constructor"/>-->
+
+        <!--&lt;!&ndash;setting implementation for a class and injecting the required dependencies&ndash;&gt;-->
+    <!--&lt;!&ndash;THIS IS REQUIRED IN CASE THERE ARE MULTIPLE IMPLEMENTATIONS&ndash;&gt;-->
+        <!--<bean name="customerService" class="com.pluralsight.service.CustomerServiceImp" >-->
+
+            <!--&lt;!&ndash;This is for setter injection &ndash;&gt;-->
+            <!--&lt;!&ndash;<property name="customerRepository" ref="repositoryImplementation"></property>&ndash;&gt;-->
+
+            <!--&lt;!&ndash;this is for constructor injection&ndash;&gt;-->
+            <!--<constructor-arg index="0" ref="repositoryImplementation"/>-->
+
+    <!--</bean>-->
 
 
-        </beans>
+    <!--&lt;!&ndash;this is the autowired option. Looks very complicated at scale.&ndash;&gt;-->
+    <!--&lt;!&ndash;<bean name="customerService" class="com.pluralsight.service.CustomerServiceImp" autowire="constructor"/>&ndash;&gt;-->
+
+
+        <!--</beans>-->
