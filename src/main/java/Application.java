@@ -13,8 +13,6 @@ public class Application {
 //        CustomerService service = appContext.getBean("customerService", CustomerService.class);
 
 
-
-
 //      JAVA config
         ApplicationContext appContext = new AnnotationConfigApplicationContext(AppConfig.class);
         CustomerService service = appContext.getBean("customerService", CustomerService.class);

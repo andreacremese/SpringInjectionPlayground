@@ -66,6 +66,11 @@ public class CustomerServiceImp implements CustomerService {
 
     @Override
     public List<Customer> findAll() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return customerRepository.findAdd();
     }
 }
