@@ -13,25 +13,25 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 // ONLY for JAVA injection
 @Configuration
 
-//@ComponentScan({"com.pluralsight"})
+// ONLY for autowired
+@ComponentScan({"com.pluralsight"})
 
 // Annotation in order to pass in proprerites.
 @PropertySource("app.properties")
 public class AppConfig {
 
 
-    // Setter implementation of injection
-    @Bean("customerService")
-    public CustomerService getCustomerService() {
-        CustomerServiceImp result = new CustomerServiceImp();
-        result.setCustomerRepository(getCustomerRepository());
-        return result;
-    }
+//    @Bean("customerService")
+//    public CustomerService getCustomerService() {
+//        CustomerServiceImp result = new CustomerServiceImp();
+////        result.setCustomerRepository(getCustomerRepository());
+//        return result;
+//    }
 
-    @Bean("customerRepository")
-    public CustomerRepository getCustomerRepository() {
-        return new HibernateCustomerRepositoryImpl();
-    }
+//    @Bean("customerRepositoryGeneric")
+//    public CustomerRepository getCustomerRepository() {
+//        return new HibernateCustomerRepositoryImpl();
+//    }
 
     // This is reqruied in order to read the properties in the file
     @Bean
