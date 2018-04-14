@@ -1,3 +1,5 @@
+package com.pluralsight;
+
 import com.pluralsight.repository.CustomerRepository;
 import com.pluralsight.repository.HibernateCustomerRepositoryImpl;
 import com.pluralsight.service.CustomerService;
@@ -17,12 +19,12 @@ public class AppConfig {
 
 
     // Setter implementation of injection
-    @Bean("customerService")
-    public CustomerService getCustomerService() {
-        CustomerServiceImp result = new CustomerServiceImp();
-        result.setCustomerRepository(getCustomerRepository());
-        return result;
-    }
+//    @Bean("customerService")
+//    public CustomerService getCustomerService() {
+//        CustomerServiceImp result = new CustomerServiceImp();
+//        result.setCustomerRepository(getCustomerRepository());
+//        return result;
+//    }
 
     @Bean("customerRepository")
     public CustomerRepository getCustomerRepository() {

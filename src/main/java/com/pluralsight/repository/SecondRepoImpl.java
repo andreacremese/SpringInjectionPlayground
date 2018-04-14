@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // annotations method - stereotype
-//@Repository("secondImplementation")
+@Repository("secondImplementation")
 public class SecondRepoImpl implements CustomerRepository {
     @Value("${connString}")
     private String connString;

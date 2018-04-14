@@ -17,12 +17,12 @@ import java.util.List;
 
 // ANNOTATIONS
 // add the stereotype bean type
-//@Service("customerService")
+@Service("customerService")
 public class CustomerServiceImp implements CustomerService {
 
 
 // XML
-    private CustomerRepository customerRepository;
+//    private CustomerRepository customerRepository;
 
 //    public void setCustomerRepository(CustomerRepository customerRepository) {
 //        this.customerRepository = customerRepository;
@@ -56,10 +56,17 @@ public class CustomerServiceImp implements CustomerService {
 
 
 // JAVA injection
-    public void setCustomerRepository(CustomerRepository customerRepository) {
+//    public void setCustomerRepository(CustomerRepository customerRepository) {
+//        this.customerRepository = customerRepository;
+//    }
+
+
+    @Autowired
+    private CustomerRepository customerRepository;
+
+    public CustomerServiceImp(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
-
 
 
 

@@ -1,3 +1,5 @@
+package com.pluralsight;
+
 import com.pluralsight.service.CustomerService;
 import com.pluralsight.service.CustomerServiceImp;
 import org.springframework.context.ApplicationContext;
